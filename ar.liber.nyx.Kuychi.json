@@ -1,6 +1,6 @@
 {
-  "id": "ar.liber.nyx.GnomeTsTemplate",
-  "command": "gnome-ts-template",
+  "id": "ar.liber.nyx.Kuychi",
+  "command": "kuychi",
   "runtime": "org.gnome.Platform",
   "runtime-version": "48",
   "sdk": "org.gnome.Sdk",
@@ -17,7 +17,7 @@
   ],
   "modules": [
     {
-      "name": "gnome-ts-template",
+      "name": "kuychi",
       "buildsystem": "meson",
       "build-options": {
         "build-args": ["--share=network"]

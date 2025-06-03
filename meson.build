@@ -1,6 +1,5 @@
 project(
-  'gnome-ts-template',
-  # FIXME: Choose a license that fits your project
+  'kuychi',
   license: 'BlueOak-1.0.0',
   license_files: 'LICENSE.md',
   meson_version: '>=1.1',
@@ -11,8 +10,7 @@ fs = import('fs')
 gnome = import('gnome')
 i18n = import('i18n')
 
-# FIXME: Choose an app id: https://docs.flathub.org/docs/for-app-authors/requirements#application-id
-app_id = 'ar.liber.nyx.GnomeTsTemplate'
+app_id = 'ar.liber.nyx.Kuychi'
 gettext_package = meson.project_name()
 version = meson.project_version()
 vcs_tag = 'unknown'

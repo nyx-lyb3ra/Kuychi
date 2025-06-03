@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type = Application
-Name = GNOME TypeScript Template
+Name = K’uychi
 Icon = @icon@
 TryExec = @try_exec@
 Exec = @exec@

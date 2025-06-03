@@ -11,7 +11,7 @@
     Name and summary:
     https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#name-and-summary
   -->
-  <name>GNOME TypeScript Template</name>
+  <name>K’uychi</name>
   <summary>Write a GNOME application using TypeScript</summary>
 
   <!--
@@ -49,15 +49,15 @@
   <content_rating type="oars-1.1" />
 
   <!-- URL: https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#url -->
-  <url type="bugtracker">https://codeberg.org/nyx_lyb3ra/gnome-ts-template/issues</url>
-  <url type="homepage">https://codeberg.org/nyx_lyb3ra/gnome-ts-template</url>
-  <url type="vcs-browser">https://codeberg.org/nyx_lyb3ra/gnome-ts-template</url>
+  <url type="bugtracker">https://codeberg.org/nyx_lyb3ra/kuychi/issues</url>
+  <url type="homepage">https://codeberg.org/nyx_lyb3ra/kuychi</url>
+  <url type="vcs-browser">https://codeberg.org/nyx_lyb3ra/kuychi</url>
 
   <!-- Screenshots: https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#screenshots -->
   <screenshots>
     <screenshot type="default">
       <image>
-        https://codeberg.org/nyx_lyb3ra/gnome-ts-template/raw/main/data/screenshots/screenshot1.png
+        https://codeberg.org/nyx_lyb3ra/kuychi/raw/main/data/screenshots/screenshot1.png
       </image>
 
       <caption>Main window</caption>
@@ -65,7 +65,7 @@
 
     <screenshot>
       <image>
-        https://codeberg.org/nyx_lyb3ra/gnome-ts-template/raw/main/data/screenshots/screenshot2.png
+        https://codeberg.org/nyx_lyb3ra/kuychi/raw/main/data/screenshots/screenshot2.png
       </image>
 
       <caption>About dialog</caption>

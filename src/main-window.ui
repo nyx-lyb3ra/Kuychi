@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="ExampleMainWindow" parent="AdwApplicationWindow">
+  <template class="KuychiMainWindow" parent="AdwApplicationWindow">
     <property name="default-height">400</property>
     <property name="default-width">600</property>
 
@@ -38,7 +38,7 @@
     </item>
 
     <item>
-      <attribute name="label" translatable="yes">_About GNOME TypeScript Template</attribute>
+      <attribute name="label" translatable="yes">_About K’uychi</attribute>
       <attribute name="action">win.show-about-dialog</attribute>
     </item>
   </menu>
