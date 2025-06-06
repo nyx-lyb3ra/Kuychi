@@ -15,15 +15,6 @@ class MainWindow extends Adw.ApplicationWindow {
   public constructor(props?: Partial<Adw.ApplicationWindow.ConstructorProps>) {
     super(props);
 
-    this.set_default_size(
-      this._settings.get_int("window-width"),
-      this._settings.get_int("window-height"),
-    );
-
-    if (this._settings.get_boolean("maximized")) {
-      this.maximize();
-    }
-
     this.add_action_entries([
       {activate: this.showAboutDialog.bind(this), name: "show-about-dialog"},
     ]);
@@ -31,16 +22,6 @@ class MainWindow extends Adw.ApplicationWindow {
 
   static {
     GObject.registerClass(options, this);
-  }
-
-  public override vfunc_close_request(): boolean {
-    const [width, height] = this.get_default_size();
-    this._settings.set_int("window-width", width);
-    this._settings.set_int("window-height", height);
-
-    this._settings.set_boolean("maximized", this.is_maximized());
-
-    return super.vfunc_close_request();
   }
 
   private showAboutDialog(): void {
