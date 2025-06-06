@@ -4,8 +4,7 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    ".flatpak/**": true
+    "**/Thumbs.db": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -17,6 +16,7 @@
   "mesonbuild.buildFolder": "_build",
   "mesonbuild.configureOnOpen": false,
   "mesonbuild.mesonPath": "${workspaceFolder}/.flatpak/meson.sh",
+  "search.followSymlinks": false,
   "typescript.preferences.importModuleSpecifierEnding": "js",
   "typescript.tsdk": "node_modules/typescript/lib"
 }
