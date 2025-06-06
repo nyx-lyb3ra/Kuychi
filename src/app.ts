@@ -2,7 +2,7 @@ import Adw from "gi://Adw";
 import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 
-import MainWindow from "./main-window.js";
+import MainWindow from "./views/main-window.js";
 
 const options = {GTypeName: "KuychiApp"};
 

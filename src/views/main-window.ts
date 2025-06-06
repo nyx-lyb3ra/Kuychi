@@ -1,5 +1,4 @@
 import Adw from "gi://Adw";
-import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 
@@ -10,8 +9,6 @@ import Template from "./main-window.ui";
 const options = {GTypeName: "KuychiMainWindow", Template};
 
 class MainWindow extends Adw.ApplicationWindow {
-  private readonly _settings = Gio.Settings.new(Config.APP_ID);
-
   public constructor(props?: Partial<Adw.ApplicationWindow.ConstructorProps>) {
     super(props);
 
