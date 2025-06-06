@@ -3,6 +3,7 @@
   "exclude": ["_build"],
   "compilerOptions": {
     "module": "preserve",
-    "noEmit": true
+    "noEmit": true,
+    "paths": {"@/*": ["./src/*"]}
   }
 }
