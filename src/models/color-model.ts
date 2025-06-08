@@ -2,13 +2,12 @@ import Gdk from "gi://Gdk";
 import GObject from "gi://GObject";
 
 import Color from "colorjs.io";
-import {OKLab, sRGB} from "colorjs.io/fn";
 
 interface ConstructorProps extends GObject.Object.ConstructorProps {
   color?: Gdk.RGBA | null;
 }
 
-enum LightnessLevel {
+export enum LightnessLevel {
   EXTRA_LIGHT,
   LIGHT,
   NEUTRAL,
@@ -23,7 +22,7 @@ const options = {
       "color",
       "color",
       "color",
-      GObject.ParamFlags.WRITABLE,
+      GObject.ParamFlags.READWRITE,
       Gdk.RGBA,
     ),
     shades: GObject.ParamSpec.jsobject(
@@ -37,7 +36,7 @@ const options = {
 
 class ColorModel extends GObject.Object {
   private _color: Gdk.RGBA | null = null;
-  private readonly _shades: Partial<Record<LightnessLevel, Gdk.RGBA>> = {};
+  private _shades: Partial<Record<LightnessLevel, Gdk.RGBA>> = {};
 
   private static readonly _targetLightness = {
     [LightnessLevel.EXTRA_LIGHT]: 0.95,
@@ -49,10 +48,7 @@ class ColorModel extends GObject.Object {
 
   public constructor(props?: Partial<ConstructorProps>) {
     super(props);
-
-    if (!this._color) {
-      this.color = ColorModel.randomRgba();
-    }
+    this.color ??= ColorModel.randomRgba();
   }
 
   static {
@@ -87,6 +83,10 @@ class ColorModel extends GObject.Object {
     });
   }
 
+  public get color(): Gdk.RGBA | null {
+    return this._color;
+  }
+
   public set color(value: Gdk.RGBA | null) {
     if (value === this._color) return;
 
@@ -94,9 +94,11 @@ class ColorModel extends GObject.Object {
     this.notify("color");
 
     if (this._color) {
+      this._shades = {};
+
       const {red, green, blue} = this._color;
-      const srgb = new Color(sRGB, [red, green, blue]);
-      const oklab = srgb.to(OKLab);
+      const srgb = new Color("sRGB", [red, green, blue]);
+      const oklab = srgb.to("OKLab");
 
       const lightnessLevel = ColorModel.lightnessLevel(oklab.l);
       this._shades[lightnessLevel] = this._color;
@@ -121,8 +123,8 @@ class ColorModel extends GObject.Object {
       if (this._shades[level]) continue;
 
       const targetL = ColorModel._targetLightness[level] + adjustmentFactor;
-      const newOklab = new Color(OKLab, [targetL, oklab.a, oklab.b]);
-      const {r: red, g: green, b: blue} = newOklab.to(sRGB);
+      const newOklab = new Color("OKLab", [targetL, oklab.a, oklab.b]);
+      const {r: red, g: green, b: blue} = newOklab.to("sRGB");
 
       this._shades[level] = new Gdk.RGBA({red, green, blue, alpha: 1});
     }
