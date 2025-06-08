@@ -6,9 +6,11 @@ import Gtk from "gi://Gtk";
 import Xdp from "gi://Xdp";
 import XdpGtk4 from "gi://XdpGtk4";
 
-import Template from "./color-picker.ui";
 import {t} from "try";
+
 import {gerrorMatches} from "@/utils/error.js";
+
+import Template from "./color-picker.ui";
 
 interface ConstructorProps extends Gtk.Widget.ConstructorProps {
   color: Gdk.RGBA | null;
