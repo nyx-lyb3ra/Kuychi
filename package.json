@@ -1,5 +1,11 @@
 {
   "type": "module",
+  "scripts": {
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "colorjs.io": "^0.5.2"
+  },
   "devDependencies": {
     "@girs/adw-1": "^1.8.0-4.0.0-beta.23",
     "@girs/gio-2.0": "^2.84.0-4.0.0-beta.23",
@@ -11,6 +17,7 @@
     "@types/node": "^22.15.29",
     "esbuild": "^0.25.5",
     "eslint": "^9.28.0",
+    "patch-package": "^8.0.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.0"
