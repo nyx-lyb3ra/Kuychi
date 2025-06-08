@@ -1,6 +1,7 @@
 import Adw from "gi://Adw";
 import GLib from "gi://GLib";
 import GObject from "gi://GObject";
+import Gtk from "gi://Gtk";
 
 import {gettext as _} from "gettext";
 
@@ -84,6 +85,20 @@ class MainWindow extends Adw.ApplicationWindow {
       translatorCredits: _("translator-credits"),
       version: Config.VERSION,
     });
+
+    dialog.add_legal_section(
+      "Color.js",
+      "© 2021 Lea Verou, Chris Lilley",
+      Gtk.License.MIT_X11,
+      null,
+    );
+
+    dialog.add_legal_section(
+      "TRY",
+      "© 2025 Arthur Fiorette",
+      Gtk.License.MIT_X11,
+      null,
+    );
 
     dialog.present(this);
   }
