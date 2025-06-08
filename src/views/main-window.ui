@@ -56,6 +56,10 @@
                 <property name="height-request">100</property>
               </object>
             </child>
+
+            <child>
+              <object class="KuychiColorPicker" id="colorPicker" />
+            </child>
           </object>
         </property>
       </object>

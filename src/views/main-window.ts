@@ -5,12 +5,13 @@ import GObject from "gi://GObject";
 import {gettext as _} from "gettext";
 
 import ColorModel, {LightnessLevel} from "@/models/color-model.js";
+import type ColorPicker from "@/widgets/color-picker.js";
 import type ColorTile from "@/widgets/color-tile.js";
 
 import Template from "./main-window.ui";
 
 interface ConstructorProps extends Adw.ApplicationWindow.ConstructorProps {
-  model?: ColorModel | null;
+  model: ColorModel | null;
 }
 
 const options = {
@@ -21,6 +22,7 @@ const options = {
     "neutralTile",
     "darkTile",
     "extraDarkTile",
+    "colorPicker",
   ],
   Properties: {
     model: GObject.ParamSpec.object(
@@ -40,6 +42,7 @@ class MainWindow extends Adw.ApplicationWindow {
   declare private readonly _neutralTile: ColorTile;
   declare private readonly _darkTile: ColorTile;
   declare private readonly _extraDarkTile: ColorTile;
+  declare private readonly _colorPicker: ColorPicker;
 
   declare public model: ColorModel | null;
 
@@ -50,8 +53,17 @@ class MainWindow extends Adw.ApplicationWindow {
       {activate: this.showAboutDialog.bind(this), name: "show-about-dialog"},
     ]);
 
-    this.updateTiles();
-    this.model?.connect("notify::shades", this.updateTiles.bind(this));
+    if (this.model) {
+      this.updateTiles();
+      this.model.connect("notify::shades", this.updateTiles.bind(this));
+
+      this._colorPicker.bind_property(
+        "color",
+        this.model,
+        "color",
+        GObject.BindingFlags.SYNC_CREATE,
+      );
+    }
   }
 
   static {
