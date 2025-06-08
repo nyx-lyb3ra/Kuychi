@@ -38,14 +38,6 @@ class ColorModel extends GObject.Object {
   private _color: Gdk.RGBA | null = null;
   private _shades: Partial<Record<LightnessLevel, Gdk.RGBA>> = {};
 
-  private static readonly _targetLightness = {
-    [LightnessLevel.EXTRA_LIGHT]: 0.95,
-    [LightnessLevel.LIGHT]: 0.7,
-    [LightnessLevel.NEUTRAL]: 0.5,
-    [LightnessLevel.DARK]: 0.3,
-    [LightnessLevel.EXTRA_DARK]: 0.1,
-  };
-
   public constructor(props?: Partial<ConstructorProps>) {
     super(props);
   }
@@ -56,20 +48,20 @@ class ColorModel extends GObject.Object {
 
   private static lightnessLevel(lightness: number): LightnessLevel {
     switch (true) {
-      case lightness > 0.825:
+      case lightness > 0.9:
         return LightnessLevel.EXTRA_LIGHT;
 
-      case lightness > 0.6:
+      case lightness <= 0.9 && lightness > 0.8:
         return LightnessLevel.LIGHT;
 
-      case lightness > 0.4:
-        return LightnessLevel.NEUTRAL;
-
-      case lightness > 0.2:
+      case lightness < 0.2 && lightness >= 0.1:
         return LightnessLevel.DARK;
 
-      default:
+      case lightness < 0.1:
         return LightnessLevel.EXTRA_DARK;
+
+      default:
+        return LightnessLevel.NEUTRAL;
     }
   }
 
@@ -94,8 +86,7 @@ class ColorModel extends GObject.Object {
       const lightnessLevel = ColorModel.lightnessLevel(oklab.l);
       this._shades[lightnessLevel] = this._color;
 
-      const idealL = ColorModel._targetLightness[lightnessLevel];
-      this.generateMissingShades(oklab, oklab.l - idealL);
+      this.generateMissingShades(oklab, lightnessLevel);
 
       this.notify("shades");
     }
@@ -105,7 +96,7 @@ class ColorModel extends GObject.Object {
     return this._shades;
   }
 
-  private generateMissingShades(oklab: Color, adjustmentFactor: number): void {
+  private generateMissingShades(oklab: Color, baseLevel: LightnessLevel): void {
     const levels = Object.values(LightnessLevel).filter(
       value => typeof value === "number",
     );
@@ -113,8 +104,11 @@ class ColorModel extends GObject.Object {
     for (const level of levels) {
       if (this._shades[level]) continue;
 
-      const targetL = ColorModel._targetLightness[level] + adjustmentFactor;
-      const newOklab = new Color("OKLab", [targetL, oklab.a, oklab.b]);
+      const levelDifference = baseLevel - level;
+      const targetL = oklab.l + levelDifference * 0.1;
+      const clampedL = Math.max(0, Math.min(1, targetL));
+
+      const newOklab = new Color("OKLab", [clampedL, oklab.a, oklab.b]);
       const {r: red, g: green, b: blue} = newOklab.to("sRGB");
 
       this._shades[level] = new Gdk.RGBA({red, green, blue, alpha: 1});
