@@ -3,6 +3,7 @@ import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 
 import MainWindow from "./views/main-window.js";
+import ColorTile from "./widgets/color-tile.js";
 
 const options = {GTypeName: "KuychiApp"};
 
@@ -28,6 +29,8 @@ class App extends Adw.Application {
     this.add_action_entries([{activate: this.quit.bind(this), name: "quit"}]);
     this.set_accels_for_action("app.quit", ["<Ctrl>Q"]);
     this.set_accels_for_action("window.close", ["<Ctrl>W"]);
+
+    GObject.type_ensure(ColorTile.$gtype);
 
     new MainWindow({application: this});
   }
