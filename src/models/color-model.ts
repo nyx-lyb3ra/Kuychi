@@ -48,7 +48,6 @@ class ColorModel extends GObject.Object {
 
   public constructor(props?: Partial<ConstructorProps>) {
     super(props);
-    this.color ??= ColorModel.randomRgba();
   }
 
   static {
@@ -72,15 +71,6 @@ class ColorModel extends GObject.Object {
       default:
         return LightnessLevel.EXTRA_DARK;
     }
-  }
-
-  private static randomRgba(): Gdk.RGBA {
-    return new Gdk.RGBA({
-      red: Math.random(),
-      green: Math.random(),
-      blue: Math.random(),
-      alpha: 1,
-    });
   }
 
   public get color(): Gdk.RGBA | null {
