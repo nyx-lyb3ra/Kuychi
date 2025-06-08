@@ -55,10 +55,7 @@ class ColorPicker extends Gtk.Widget {
   private handleChanged(): void {
     const newColor = new Gdk.RGBA();
     const ok = newColor.parse(this._entry.text);
-
-    if (ok) {
-      this.color = newColor;
-    }
+    if (ok) this.color = newColor;
   }
 
   private async handleIconRelease(
