@@ -4,7 +4,7 @@ import GObject from "gi://GObject";
 import Color from "colorjs.io";
 
 interface ConstructorProps extends GObject.Object.ConstructorProps {
-  color?: Gdk.RGBA | null;
+  color: Gdk.RGBA | null;
 }
 
 export enum LightnessLevel {

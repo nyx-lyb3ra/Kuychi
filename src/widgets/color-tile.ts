@@ -4,7 +4,7 @@ import Graphene from "gi://Graphene";
 import Gtk from "gi://Gtk";
 
 interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-  color?: Gdk.RGBA;
+  color: Gdk.RGBA | null;
 }
 
 const options = {
