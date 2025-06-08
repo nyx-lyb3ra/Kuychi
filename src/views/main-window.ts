@@ -91,15 +91,16 @@ class MainWindow extends Adw.ApplicationWindow {
   private updateTiles(): void {
     if (!this.model) return;
 
+    this._lightTile.color = this.model.shades.get(LightnessLevel.LIGHT) ?? null;
+    this._darkTile.color = this.model.shades.get(LightnessLevel.DARK) ?? null;
+
     this._extraLightTile.color =
-      this.model.shades[LightnessLevel.EXTRA_LIGHT] ?? null;
-
-    this._lightTile.color = this.model.shades[LightnessLevel.LIGHT] ?? null;
-    this._neutralTile.color = this.model.shades[LightnessLevel.NEUTRAL] ?? null;
-    this._darkTile.color = this.model.shades[LightnessLevel.DARK] ?? null;
-
+      this.model.shades.get(LightnessLevel.EXTRA_LIGHT) ?? null;
     this._extraDarkTile.color =
-      this.model.shades[LightnessLevel.EXTRA_DARK] ?? null;
+      this.model.shades.get(LightnessLevel.EXTRA_DARK) ?? null;
+
+    this._neutralTile.color =
+      this.model.shades.get(LightnessLevel.NEUTRAL) ?? null;
   }
 }
 

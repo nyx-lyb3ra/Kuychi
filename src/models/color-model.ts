@@ -1,10 +1,9 @@
-import Gdk from "gi://Gdk";
 import GObject from "gi://GObject";
 
 import Color from "colorjs.io";
 
 interface ConstructorProps extends GObject.Object.ConstructorProps {
-  color: Gdk.RGBA | null;
+  color: Color | null;
 }
 
 export enum LightnessLevel {
@@ -18,12 +17,11 @@ export enum LightnessLevel {
 const options = {
   GTypeName: "KuychiColorModel",
   Properties: {
-    color: GObject.ParamSpec.boxed(
+    color: GObject.ParamSpec.jsobject(
       "color",
       "color",
       "color",
       GObject.ParamFlags.READWRITE,
-      Gdk.RGBA,
     ),
     shades: GObject.ParamSpec.jsobject(
       "shades",
@@ -35,8 +33,8 @@ const options = {
 };
 
 class ColorModel extends GObject.Object {
-  private _color: Gdk.RGBA | null = null;
-  private _shades: Partial<Record<LightnessLevel, Gdk.RGBA>> = {};
+  private _color: Color | null = null;
+  private readonly _shades = new Map<LightnessLevel, Color>();
 
   public constructor(props?: Partial<ConstructorProps>) {
     super(props);
@@ -65,26 +63,23 @@ class ColorModel extends GObject.Object {
     }
   }
 
-  public get color(): Gdk.RGBA | null {
+  public get color(): Color | null {
     return this._color;
   }
 
-  public set color(value: Gdk.RGBA | null) {
+  public set color(value: Color | null) {
     if (!value && !this._color) return;
-    if (value && this._color && value.equal(this._color)) return;
+    if (value && this._color && value.equals(this._color)) return;
 
     this._color = value;
     this.notify("color");
 
     if (this._color) {
-      this._shades = {};
+      this._shades.clear();
 
-      const {red, green, blue} = this._color;
-      const srgb = new Color("sRGB", [red, green, blue]);
-      const oklab = srgb.to("OKLab");
-
+      const oklab = this._color.to("OKLab");
       const lightnessLevel = ColorModel.lightnessLevel(oklab.l);
-      this._shades[lightnessLevel] = this._color;
+      this._shades.set(lightnessLevel, this._color);
 
       this.generateMissingShades(oklab, lightnessLevel);
 
@@ -92,7 +87,7 @@ class ColorModel extends GObject.Object {
     }
   }
 
-  public get shades(): Readonly<Partial<Record<LightnessLevel, Gdk.RGBA>>> {
+  public get shades(): ReadonlyMap<LightnessLevel, Color> {
     return this._shades;
   }
 
@@ -102,16 +97,14 @@ class ColorModel extends GObject.Object {
     );
 
     for (const level of levels) {
-      if (this._shades[level]) continue;
+      if (this._shades.has(level)) continue;
 
       const levelDifference = baseLevel - level;
       const targetL = oklab.l + levelDifference * 0.1;
       const clampedL = Math.max(0, Math.min(1, targetL));
 
       const newOklab = new Color("OKLab", [clampedL, oklab.a, oklab.b]);
-      const {r: red, g: green, b: blue} = newOklab.to("sRGB");
-
-      this._shades[level] = new Gdk.RGBA({red, green, blue, alpha: 1});
+      this._shades.set(level, newOklab.to("sRGB"));
     }
   }
 }

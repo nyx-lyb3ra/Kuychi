@@ -6,8 +6,10 @@ import Gtk from "gi://Gtk";
 import Xdp from "gi://Xdp";
 import XdpGtk4 from "gi://XdpGtk4";
 
+import Color from "colorjs.io";
 import {t} from "try";
 
+import {rgbaToColor} from "@/utils/color.js";
 import {gerrorMatches} from "@/utils/error.js";
 
 import Template from "./color-picker.ui";
@@ -23,12 +25,11 @@ const options = {
   GTypeName: "KuychiColorPicker",
   InternalChildren: ["entry"],
   Properties: {
-    color: GObject.ParamSpec.boxed(
+    color: GObject.ParamSpec.jsobject(
       "color",
       "color",
       "color",
       GObject.ParamFlags.READWRITE,
-      Gdk.RGBA,
     ),
   },
   Template,
@@ -37,15 +38,15 @@ const options = {
 class ColorPicker extends Gtk.Widget {
   declare private readonly _entry: Gtk.Entry;
 
-  declare public color: Gdk.RGBA | null;
+  declare public color: Color | null;
 
   public constructor(props?: Partial<ConstructorProps>) {
     super(props);
 
     const styleManager = Adw.StyleManager.get_default();
+    this.color = rgbaToColor(styleManager.accentColorRgba);
 
-    this.color = styleManager.accentColorRgba;
-    this._entry.text = this.color.to_string();
+    this._entry.text = this.color.toString({format: "hex"});
   }
 
   static {
@@ -53,9 +54,8 @@ class ColorPicker extends Gtk.Widget {
   }
 
   private handleChanged(): void {
-    const newColor = new Gdk.RGBA();
-    const ok = newColor.parse(this._entry.text);
-    if (ok) this.color = newColor;
+    const [colorOk, , newColor] = t(() => new Color(this._entry.text));
+    if (colorOk) this.color = newColor;
   }
 
   private async handleIconRelease(
@@ -78,9 +78,9 @@ class ColorPicker extends Gtk.Widget {
     }
 
     const [r, g, b] = result.deepUnpack<[number, number, number]>();
+    this.color = new Color("sRGB", [r, g, b]);
 
-    this.color = new Gdk.RGBA({red: r, green: g, blue: b, alpha: 1});
-    this._entry.text = this.color.to_string();
+    this._entry.text = this.color.toString({format: "hex"});
   }
 }
 
