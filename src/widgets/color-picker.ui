@@ -9,7 +9,7 @@
 
     <child>
       <object class="GtkLabel">
-        <property name="label">Pick a Color</property>
+        <property name="label" translatable="yes">Pick a Color</property>
 
         <style>
           <class name="title-2" />
