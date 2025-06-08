@@ -88,7 +88,8 @@ class ColorModel extends GObject.Object {
   }
 
   public set color(value: Gdk.RGBA | null) {
-    if (value === this._color) return;
+    if (!value && !this._color) return;
+    if (value && this._color && value.equal(this._color)) return;
 
     this._color = value;
     this.notify("color");

@@ -36,11 +36,12 @@ class ColorTile extends Gtk.Widget {
   }
 
   public set color(value: Gdk.RGBA | null) {
-    if (value !== this._color) {
-      this._color = value;
-      this.notify("color");
-      this.queue_draw();
-    }
+    if (!value && !this._color) return;
+    if (value && this._color && value.equal(this._color)) return;
+
+    this._color = value;
+    this.notify("color");
+    this.queue_draw();
   }
 
   public override vfunc_snapshot(snapshot: Gtk.Snapshot): void {
