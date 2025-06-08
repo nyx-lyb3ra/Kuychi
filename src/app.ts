@@ -32,8 +32,8 @@ class App extends Adw.Application {
     this.set_accels_for_action("app.quit", ["<Ctrl>Q"]);
     this.set_accels_for_action("window.close", ["<Ctrl>W"]);
 
-    GObject.type_ensure(ColorPicker.$gtype);
-    GObject.type_ensure(ColorTile.$gtype);
+    GObject.type_ensure(ColorPicker);
+    GObject.type_ensure(ColorTile);
 
     new MainWindow({application: this, model: new ColorModel()});
   }
