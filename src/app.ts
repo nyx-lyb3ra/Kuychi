@@ -4,6 +4,7 @@ import GObject from "gi://GObject";
 
 import ColorModel from "./models/color-model.js";
 import MainWindow from "./views/main-window.js";
+import ColorPicker from "./widgets/color-picker.js";
 import ColorTile from "./widgets/color-tile.js";
 
 const options = {GTypeName: "KuychiApp"};
@@ -31,6 +32,7 @@ class App extends Adw.Application {
     this.set_accels_for_action("app.quit", ["<Ctrl>Q"]);
     this.set_accels_for_action("window.close", ["<Ctrl>W"]);
 
+    GObject.type_ensure(ColorPicker.$gtype);
     GObject.type_ensure(ColorTile.$gtype);
 
     new MainWindow({application: this, model: new ColorModel()});

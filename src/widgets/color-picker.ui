@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="KuychiColorPicker" parent="GtkWidget">
+    <property name="layout-manager">
+      <object class="GtkBoxLayout">
+        <property name="orientation">vertical</property>
+      </object>
+    </property>
+
+    <child>
+      <object class="GtkLabel">
+        <property name="label">Pick a Color</property>
+
+        <style>
+          <class name="title-2" />
+        </style>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkEntry" id="entry">
+        <property name="secondary-icon-name">kuychi-color-picker-symbolic</property>
+        <signal name="changed" handler="handleChanged" />
+        <signal name="icon-release" handler="handleIconRelease" />
+      </object>
+    </child>
+  </template>
+</interface>

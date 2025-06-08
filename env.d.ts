@@ -1,4 +1,6 @@
 /// <reference types="@girs/adw-1/ambient" />
+/// <reference types="@girs/xdp-1.0/ambient" />
+/// <reference types="@girs/xdpgtk4-1.0/ambient" />
 
 declare namespace Config {
   export const APP_ID: string;
