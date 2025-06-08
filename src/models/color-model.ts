@@ -103,8 +103,7 @@ class ColorModel extends GObject.Object {
       const targetL = oklab.l + levelDifference * 0.1;
       const clampedL = Math.max(0, Math.min(1, targetL));
 
-      const newOklab = new Color("OKLab", [clampedL, oklab.a, oklab.b]);
-      this._shades.set(level, newOklab.to("sRGB"));
+      this._shades.set(level, new Color("OKLab", [clampedL, oklab.a, oklab.b]));
     }
   }
 }
