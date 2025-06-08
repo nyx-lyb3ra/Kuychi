@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="KuychiMainWindow" parent="AdwApplicationWindow">
-    <property name="default-height">400</property>
-    <property name="default-width">600</property>
+    <property name="height-request">-1</property>
+    <property name="resizable">no</property>
+    <property name="width-request">200</property>
 
     <property name="content">
       <object class="AdwToolbarView">
+        <property name="extend-content-to-top-edge">yes</property>
+
         <child type="top">
           <object class="AdwHeaderBar">
-            <child type="end">
+            <property name="show-title">no</property>
+
+            <child type="start">
               <object class="GtkMenuButton">
                 <property name="direction">none</property>
                 <property name="menu-model">primary-menu</property>
@@ -19,12 +24,38 @@
         </child>
 
         <property name="content">
-          <object class="GtkLabel">
-            <property name="label" translatable="yes">Hello, world!</property>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
 
-            <style>
-              <class name="title-1" />
-            </style>
+            <child>
+              <object class="KuychiColorTile" id="extraLightTile">
+                <property name="height-request">100</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KuychiColorTile" id="lightTile">
+                <property name="height-request">100</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KuychiColorTile" id="neutralTile">
+                <property name="height-request">100</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KuychiColorTile" id="darkTile">
+                <property name="height-request">100</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KuychiColorTile" id="extraDarkTile">
+                <property name="height-request">100</property>
+              </object>
+            </child>
           </object>
         </property>
       </object>

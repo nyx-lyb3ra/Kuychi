@@ -2,6 +2,7 @@ import Adw from "gi://Adw";
 import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 
+import ColorModel from "./models/color-model.js";
 import MainWindow from "./views/main-window.js";
 import ColorTile from "./widgets/color-tile.js";
 
@@ -17,7 +18,7 @@ class App extends Adw.Application {
   }
 
   public override vfunc_activate(): void {
-    this.activeWindow.present();
+    this.activeWindow?.present();
   }
 
   public override vfunc_startup(): void {
@@ -32,7 +33,7 @@ class App extends Adw.Application {
 
     GObject.type_ensure(ColorTile.$gtype);
 
-    new MainWindow({application: this});
+    new MainWindow({application: this, model: new ColorModel()});
   }
 }
 
