@@ -1,10 +1,17 @@
 [Desktop Entry]
 Type = Application
+# Translators: App Name. Do NOT translate.
 Name = K’uychi
+# Translators: Generic Name: “K’uychi is a...”
+GenericName = Color Shade Generator
+# Translators: Comment: “K’uychi helps you...”
+Comment = Create color palettes
 Icon = @icon@
 TryExec = @try_exec@
 Exec = @exec@
 Terminal = false
-Categories = GNOME;
+Categories = Utility;GNOME;
+# Translators: Keywords. End the string with ‘;’
+Keywords = color;palette;generator;shades;gradient;tones;hexadecimal;design;ui;ux;rainbow;
 StartupNotify = true
 DBusActivatable = true
