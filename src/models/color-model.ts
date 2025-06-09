@@ -46,16 +46,16 @@ class ColorModel extends GObject.Object {
 
   private static lightnessLevel(lightness: number): LightnessLevel {
     switch (true) {
-      case lightness > 0.9:
+      case lightness > 90:
         return LightnessLevel.EXTRA_LIGHT;
 
-      case lightness <= 0.9 && lightness > 0.8:
+      case lightness <= 90 && lightness > 80:
         return LightnessLevel.LIGHT;
 
-      case lightness < 0.2 && lightness >= 0.1:
+      case lightness < 20 && lightness >= 10:
         return LightnessLevel.DARK;
 
-      case lightness < 0.1:
+      case lightness < 10:
         return LightnessLevel.EXTRA_DARK;
 
       default:
@@ -77,11 +77,11 @@ class ColorModel extends GObject.Object {
     if (this._color) {
       this._shades.clear();
 
-      const oklab = this._color.to("OKLab");
-      const lightnessLevel = ColorModel.lightnessLevel(oklab.l);
+      const lab = this._color.to("Lab");
+      const lightnessLevel = ColorModel.lightnessLevel(lab.l);
       this._shades.set(lightnessLevel, this._color);
 
-      this.generateMissingShades(oklab, lightnessLevel);
+      this.generateMissingShades(lab, lightnessLevel);
 
       this.notify("shades");
     }
@@ -91,7 +91,7 @@ class ColorModel extends GObject.Object {
     return this._shades;
   }
 
-  private generateMissingShades(oklab: Color, baseLevel: LightnessLevel): void {
+  private generateMissingShades(lab: Color, baseLevel: LightnessLevel): void {
     const levels = Object.values(LightnessLevel).filter(
       value => typeof value === "number",
     );
@@ -100,10 +100,10 @@ class ColorModel extends GObject.Object {
       if (this._shades.has(level)) continue;
 
       const levelDifference = baseLevel - level;
-      const targetL = oklab.l + levelDifference * 0.1;
-      const clampedL = Math.max(0, Math.min(1, targetL));
+      const targetL = lab.l + levelDifference * 10;
+      const clampedL = Math.max(0, Math.min(100, targetL));
 
-      this._shades.set(level, new Color("OKLab", [clampedL, oklab.a, oklab.b]));
+      this._shades.set(level, new Color("Lab", [clampedL, lab.a, lab.b]));
     }
   }
 }
