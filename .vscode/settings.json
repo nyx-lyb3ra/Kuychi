@@ -1,4 +1,7 @@
 {
+  "files.associations": {
+    "*.ui": "xml"
+  },
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
