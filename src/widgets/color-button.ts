@@ -55,10 +55,10 @@ class ColorButton extends Gtk.Widget {
     this._drawingArea.queue_draw();
 
     if (this.color) {
-      const lab = this.color.to("Lab");
-      const [lightness] = lab.coords;
+      const oklab = this.color.to("OKLab");
+      const [lightness] = oklab.coords;
 
-      if (lightness < 50) {
+      if (lightness < 0.5) {
         this.add_css_class("kuychi-dark");
       } else {
         this.remove_css_class("kuychi-dark");
