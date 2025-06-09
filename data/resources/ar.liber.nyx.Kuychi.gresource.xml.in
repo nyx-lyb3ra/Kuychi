@@ -2,7 +2,9 @@
 <gresources>
   <gresource prefix="@prefix@">
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/kuychi-check-plain-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/scalable/actions/kuychi-color-picker-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/actions/kuychi-copy-symbolic.svg</file>
     <file>style.css</file>
   </gresource>
 </gresources>

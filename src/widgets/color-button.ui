@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="KuychiColorButton" parent="GtkWidget">
+    <property name="layout-manager">
+      <object class="GtkBinLayout" />
+    </property>
+
+    <child>
+      <object class="GtkButton" id="button">
+        <property name="has-frame">no</property>
+        <signal name="clicked" handler="handleClicked" />
+
+        <property name="child">
+          <object class="GtkOverlay">
+            <property name="child">
+              <object class="GtkDrawingArea" id="drawingArea" />
+            </property>
+
+            <child type="overlay">
+              <object class="GtkImage">
+                <property name="halign">center</property>
+                <property name="icon-name">kuychi-copy-symbolic</property>
+                <property name="icon-size">large</property>
+                <property name="valign">center</property>
+
+                <style>
+                  <class name="kuychi-copy-icon" />
+                </style>
+              </object>
+            </child>
+
+            <child type="overlay">
+              <object class="GtkImage">
+                <property name="halign">center</property>
+                <property name="icon-name">kuychi-check-plain-symbolic</property>
+                <property name="icon-size">large</property>
+                <property name="valign">center</property>
+
+                <style>
+                  <class name="kuychi-check-icon" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkEventControllerMotion">
+        <signal name="leave" handler="handleMouseLeave" />
+      </object>
+    </child>
+  </template>
+</interface>

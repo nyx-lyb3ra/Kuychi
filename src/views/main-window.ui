@@ -30,31 +30,31 @@
                 <property name="orientation">vertical</property>
 
                 <child>
-                  <object class="KuychiColorTile" id="extraLightTile">
+                  <object class="KuychiColorButton" id="extraLightTile">
                     <property name="height-request">100</property>
                   </object>
                 </child>
 
                 <child>
-                  <object class="KuychiColorTile" id="lightTile">
+                  <object class="KuychiColorButton" id="lightTile">
                     <property name="height-request">100</property>
                   </object>
                 </child>
 
                 <child>
-                  <object class="KuychiColorTile" id="neutralTile">
+                  <object class="KuychiColorButton" id="neutralTile">
                     <property name="height-request">100</property>
                   </object>
                 </child>
 
                 <child>
-                  <object class="KuychiColorTile" id="darkTile">
+                  <object class="KuychiColorButton" id="darkTile">
                     <property name="height-request">100</property>
                   </object>
                 </child>
 
                 <child>
-                  <object class="KuychiColorTile" id="extraDarkTile">
+                  <object class="KuychiColorButton" id="extraDarkTile">
                     <property name="height-request">100</property>
                   </object>
                 </child>

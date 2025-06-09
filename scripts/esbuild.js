@@ -7,7 +7,7 @@ if (entryPoint && outdir) {
   await build({
     bundle: true,
     entryPoints: [entryPoint],
-    external: ["gettext", "gi://*"],
+    external: ["cairo", "gettext", "gi://*"],
     format: "esm",
     loader: {".ui": "text"},
     outdir: outdir,

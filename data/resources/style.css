@@ -1,3 +1,30 @@
+kuychi-color-button button {
+  background: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+kuychi-color-button image {
+  opacity: 0;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+kuychi-color-button:hover image.kuychi-copy-icon {
+  opacity: 1;
+}
+
+kuychi-color-button.kuychi-copied image.kuychi-copy-icon {
+  opacity: 0;
+}
+
+kuychi-color-button.kuychi-copied image.kuychi-check-icon {
+  opacity: 1;
+}
+
+kuychi-color-button.kuychi-dark {
+  color: white;
+}
+
 kuychi-color-picker {
   border-spacing: 12px;
   padding: 12px;

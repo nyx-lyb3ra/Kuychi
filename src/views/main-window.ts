@@ -7,7 +7,7 @@ import {gettext as _} from "gettext";
 
 import ColorModel, {LightnessLevel} from "@/models/color-model.js";
 import type ColorPicker from "@/widgets/color-picker.js";
-import type ColorTile from "@/widgets/color-tile.js";
+import type ColorButton from "@/widgets/color-button.js";
 
 import Template from "./main-window.ui";
 
@@ -38,11 +38,11 @@ const options = {
 };
 
 class MainWindow extends Adw.ApplicationWindow {
-  declare private readonly _extraLightTile: ColorTile;
-  declare private readonly _lightTile: ColorTile;
-  declare private readonly _neutralTile: ColorTile;
-  declare private readonly _darkTile: ColorTile;
-  declare private readonly _extraDarkTile: ColorTile;
+  declare private readonly _extraLightTile: ColorButton;
+  declare private readonly _lightTile: ColorButton;
+  declare private readonly _neutralTile: ColorButton;
+  declare private readonly _darkTile: ColorButton;
+  declare private readonly _extraDarkTile: ColorButton;
   declare private readonly _colorPicker: ColorPicker;
 
   declare public model: ColorModel | null;
