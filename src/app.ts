@@ -19,7 +19,7 @@ class App extends Adw.Application {
   }
 
   public override vfunc_activate(): void {
-    this.activeWindow?.present();
+    this.newWindow();
   }
 
   public override vfunc_startup(): void {
@@ -28,14 +28,26 @@ class App extends Adw.Application {
     GLib.set_application_name("K’uychi");
     GLib.set_prgname("kuychi");
 
-    this.add_action_entries([{activate: this.quit.bind(this), name: "quit"}]);
+    this.add_action_entries([
+      {activate: this.quit.bind(this), name: "quit"},
+      {activate: this.newWindow.bind(this), name: "new-window"},
+    ]);
+
+    this.set_accels_for_action("app.new-window", ["<Ctrl>N"]);
     this.set_accels_for_action("app.quit", ["<Ctrl>Q"]);
     this.set_accels_for_action("window.close", ["<Ctrl>W"]);
 
     GObject.type_ensure(ColorButton);
     GObject.type_ensure(ColorPicker);
+  }
 
-    new MainWindow({application: this, model: new ColorModel()});
+  private newWindow(): void {
+    const window = new MainWindow({
+      application: this,
+      model: new ColorModel(),
+    });
+
+    window.present();
   }
 }
 

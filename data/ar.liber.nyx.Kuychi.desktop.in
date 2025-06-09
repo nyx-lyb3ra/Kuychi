@@ -7,5 +7,4 @@ Exec = @exec@
 Terminal = false
 Categories = GNOME;
 StartupNotify = true
-SingleMainWindow = true
 DBusActivatable = true
