@@ -48,7 +48,7 @@ Here you can see K’uychi in action:
 
 ## How to Contribute
 
-I would love for you to join this project! K’uychi is constantly evolving, and
+We would love for you to join this project! K’uychi is constantly evolving, and
 all contributions are welcome, whether it be code, UI improvements, bug reports,
 or new ideas.
 
@@ -151,6 +151,14 @@ projects:
   compilation and packaging process.
 - `src/`: Here you will find all the source code for the application (GJS and
   TypeScript).
+
+## Code of Conduct
+
+To ensure an open and welcoming community, this project adheres to the
+[GNOME Code of Conduct](./CODE_OF_CONDUCT.md). We strongly encourage you to read
+and respect it before participating in any interaction within this repository!
+Your commitment to a positive environment is critical to the success of our
+community.
 
 ## License
 
