@@ -44,7 +44,7 @@ platform:
 
 Here you can see K’uychi in action:
 
-![A screenshot showing the main window of K’uychi](./data/screenshots/screenshot1.png)
+![A screenshot showing multiple K’uychi windows](./data/screenshots/screenshot1.png)
 
 ## License
 
