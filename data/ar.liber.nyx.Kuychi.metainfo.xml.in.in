@@ -25,28 +25,20 @@
   <!-- Description: https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#description -->
   <description>
     <p>
-      Have you ever found yourself searching for the perfect shade of color for your design or
-      development project, only to end up with 50 tabs open in your browser? With K’uychi, those
-      days are over!
+      K’uychi is a simple utility for generating color palettes. By selecting a base color, it
+      automatically creates a consistent scale of lighter and darker shades using the OKLab color
+      space, ensuring perceptual uniformity.
     </p>
 
     <p>
-      K’uychi (which means “rainbow” in Quechua) is your ideal tool for quickly and easily building
-      harmonious color palettes. Simply choose a base color, and K’uychi will automatically generate
-      a series of shades (lighter and darker tones) so you have a complete range at your fingertips.
+      Designed for developers and designers, K’uychi simplifies the task of finding the right tone
+      for your interface. You can copy the hexadecimal value of any generated shade with a single
+      click, ready to use in CSS or your preferred design tool.
     </p>
 
     <p>
-      Forget about guesswork. Each shade generated can be instantly copied in its hexadecimal
-      format, ready to be pasted into your CSS code, design editor, or wherever you need it.
-      Designed with usability and GNOME/Libadwaita aesthetics in mind, K’uychi is the perfect
-      companion for designers, developers, and anyone looking for precision and efficiency in color
-      management.
-    </p>
-
-    <p>
-      Simplify your color workflow and give your projects that rainbow touch they deserve with
-      K’uychi!
+      Built with Libadwaita, the application integrates seamlessly with the GNOME desktop. The name
+      "K’uychi" comes from the Quechua word for "rainbow".
     </p>
   </description>
 
