@@ -2,7 +2,7 @@
   "id": "ar.liber.nyx.Kuychi",
   "command": "kuychi",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "48",
+  "runtime-version": "49",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.node24"],
   "build-options": {
