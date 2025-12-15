@@ -1,21 +1,22 @@
 diff --git a/node_modules/@girs/gobject-2.0/gobject-2.0.d.ts b/node_modules/@girs/gobject-2.0/gobject-2.0.d.ts
-index 8207421..738038f 100644
+index bc24aca..6e700b0 100644
 --- a/node_modules/@girs/gobject-2.0/gobject-2.0.d.ts
 +++ b/node_modules/@girs/gobject-2.0/gobject-2.0.d.ts
-@@ -2101,7 +2101,7 @@ export namespace GObject {
+@@ -2225,7 +2225,7 @@ export namespace GObject {
       * type's _get_type() method is called.
       * @param type a #GType
       */
 -    function type_ensure(type: GType): void;
-+    function type_ensure(type: GType | { $gtype: GType }): void;
++    function type_ensure<T>(type: GType<T> | { $gtype: GType<T> }): void;
      /**
       * Frees an instance of a type, returning it to the instance pool for
       * the type, if there is one.
-@@ -3327,6 +3327,7 @@ export namespace GObject {
-         static $gtype: GType<Object>;
+@@ -3558,6 +3558,8 @@ export namespace GObject {
  
          // Constructors
-+        constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
  
++        constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
++
          _init(...args: any[]): void;
  
+         static newv(object_type: GType, parameters: Parameter[]): Object;
