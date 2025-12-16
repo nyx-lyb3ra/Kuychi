@@ -1,7 +1,13 @@
-# K’uychi
+<div align="center">
+  <img src="./data/icons/one.naiara.Kuychi.svg" width="128" height="128" alt="K’uychi icon">
 
-**Color shade generator with copyable hexadecimal values, based on a base
-tone.**
+  # K’uychi
+
+  **Color shade generator with copyable hexadecimal values, based on a base
+  tone.**
+
+  ![A screenshot showing multiple K’uychi windows](./data/screenshots/screenshot1.png)
+</div>
 
 ## About the Project
 
@@ -39,12 +45,6 @@ platform:
 - **Flatpak:** Packaging and development environment for consistent and isolated
   configuration.
 - **npm:** The package manager used to manage project dependencies.
-
-## Screenshot
-
-Here you can see K’uychi in action:
-
-![A screenshot showing multiple K’uychi windows](./data/screenshots/screenshot1.png)
 
 ## How to Contribute
 
@@ -126,7 +126,6 @@ of the necessary SDKs.
    The Flatpak extension in VS Code will configure the Flatpak development
    environment, install dependencies, and manage the build. You can build and
    run the application directly using:
-
    - The keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>B</kbd>
    - The Command Palette: <kbd>Ctrl</kbd> + <kbd>P</kbd>, then search for and
      select “Flatpak: Build.”
