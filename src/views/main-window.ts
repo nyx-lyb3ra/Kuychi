@@ -1,7 +1,5 @@
 import Adw from "gi://Adw";
-import GLib from "gi://GLib";
 import GObject from "gi://GObject";
-import Gtk from "gi://Gtk";
 
 import {gettext as _} from "gettext";
 
@@ -50,10 +48,6 @@ class MainWindow extends Adw.ApplicationWindow {
   public constructor(props?: Partial<ConstructorProps>) {
     super(props);
 
-    this.add_action_entries([
-      {activate: this.showAboutDialog.bind(this), name: "show-about-dialog"},
-    ]);
-
     if (this.model) {
       this.updateTiles();
       this.model.connect("notify::shades", this.updateTiles.bind(this));
@@ -69,40 +63,6 @@ class MainWindow extends Adw.ApplicationWindow {
 
   static {
     GObject.registerClass(options, this);
-  }
-
-  private showAboutDialog(): void {
-    const dialog = new Adw.AboutDialog({
-      applicationIcon: Config.APP_ID,
-      applicationName: GLib.get_application_name() ?? "",
-      copyright: "© 2025 Naiara Gomez Castro",
-      developerName: "Naiara Gomez Castro",
-      developers: ["Naiara Gomez Castro https://naiara.one/"],
-      issueUrl: "https://codeberg.org/nyx_lyb3ra/kuychi/issues",
-      license: _(
-        "This application comes with absolutely no warranty. See the " +
-          "<a href='https://blueoakcouncil.org/license/1.0.0'>Blue Oak Model License 1.0.0</a> " +
-          "for details.",
-      ),
-      translatorCredits: _("translator-credits"),
-      version: Config.VERSION,
-    });
-
-    dialog.add_legal_section(
-      "Color.js",
-      "© 2021 Lea Verou, Chris Lilley",
-      Gtk.License.MIT_X11,
-      null,
-    );
-
-    dialog.add_legal_section(
-      "TRY",
-      "© 2025 Arthur Fiorette",
-      Gtk.License.MIT_X11,
-      null,
-    );
-
-    dialog.present(this);
   }
 
   private updateTiles(): void {

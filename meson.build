@@ -29,11 +29,11 @@ datadir = prefix / get_option('datadir')
 localedir = prefix / get_option('localedir')
 pkgdatadir = datadir / app_id
 
-dependency('gio-2.0', version: '>=2.84')
-dependency('glib-2.0', version: '>=2.84')
-dependency('gobject-2.0', version: '>=2.84')
-dependency('gtk4', version: '>=4.18')
-dependency('libadwaita-1', version: '>=1.7')
+dependency('gio-2.0', version: '>=2.82')
+dependency('glib-2.0', version: '>=2.82')
+dependency('gobject-2.0', version: '>=2.82')
+dependency('gtk4', version: '>=4.20')
+dependency('libadwaita-1', version: '>=1.8')
 
 configure_file(
   configuration: {
