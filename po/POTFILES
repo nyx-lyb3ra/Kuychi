@@ -1,7 +1,7 @@
 data/resources/gtk/help-overlay.ui
-data/ar.liber.nyx.Kuychi.desktop.in
-data/ar.liber.nyx.Kuychi.gschema.xml.in
-data/ar.liber.nyx.Kuychi.metainfo.xml.in.in
+data/one.naiara.Kuychi.desktop.in
+data/one.naiara.Kuychi.gschema.xml.in
+data/one.naiara.Kuychi.metainfo.xml.in.in
 src/views/main-window.ts
 src/views/main-window.ui
 src/widgets/color-picker.ui

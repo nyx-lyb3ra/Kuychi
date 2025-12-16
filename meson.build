@@ -10,7 +10,7 @@ fs = import('fs')
 gnome = import('gnome')
 i18n = import('i18n')
 
-app_id = 'ar.liber.nyx.Kuychi'
+app_id = 'one.naiara.Kuychi'
 gettext_package = meson.project_name()
 version = meson.project_version()
 vcs_tag = 'unknown'

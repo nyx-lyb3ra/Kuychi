@@ -75,12 +75,14 @@ class MainWindow extends Adw.ApplicationWindow {
     const dialog = new Adw.AboutDialog({
       applicationIcon: Config.APP_ID,
       applicationName: GLib.get_application_name() ?? "",
-      copyright: "© 2025 [nyx]",
-      developerName: "[nyx]",
-      developers: ["[nyx] https://nyx.liber.ar/"],
+      copyright: "© 2025 Naiara Gomez Castro",
+      developerName: "Naiara Gomez Castro",
+      developers: ["Naiara Gomez Castro https://naiara.one/"],
       issueUrl: "https://codeberg.org/nyx_lyb3ra/kuychi/issues",
       license: _(
-        "This application comes with absolutely no warranty. See the <a href='https://blueoakcouncil.org/license/1.0.0'>Blue Oak Model License 1.0.0</a> for details.",
+        "This application comes with absolutely no warranty. See the " +
+          "<a href='https://blueoakcouncil.org/license/1.0.0'>Blue Oak Model License 1.0.0</a> " +
+          "for details.",
       ),
       translatorCredits: _("translator-credits"),
       version: Config.VERSION,

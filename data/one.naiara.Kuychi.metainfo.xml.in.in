@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- © 2025 [nyx] (https://nyx.liber.ar/) -->
+<!-- © 2025 Naiara Gomez Castro (https://naiara.one/) -->
 <component type="desktop-application">
   <id>@id@</id>
 
@@ -18,8 +18,8 @@
     Developer name:
     https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#developer-name
   -->
-  <developer id="ar.liber.nyx">
-    <name translatable="no">[nyx]</name>
+  <developer id="one.naiara">
+    <name translatable="no">Naiara Gomez Castro</name>
   </developer>
 
   <!-- Description: https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/#description -->
